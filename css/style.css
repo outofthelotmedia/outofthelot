@@ -393,6 +393,21 @@ body {
 }
 .ae-btn:hover .ae-arrow { transform: translateX(4px); }
 
+.episode-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1.5rem;
+}
+
+.episode-title {
+  margin: 0;
+}
+
+.all-episodes-btn {
+  margin: 0;
+}
+
 /* ==================== ABOUT SECTIONS ==================== */
 
 .about-section {
