@@ -360,30 +360,38 @@ body {
   width: 100%;
 }
 
-.all-episodes-btn {
+.ae-btn {
   display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
+  align-items: right;
+  gap: 0.6rem;
+  padding: 0.9rem 2.4rem;
   font-family: var(--font-body);
-  font-size: 0.78rem;
+  font-size: 0.85rem;
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   text-decoration: none;
   color: var(--cream);
   border: 1.5px solid var(--orange);
-  padding: 0.5rem 1.2rem;
   background: transparent;
-  transition: background 0.25s ease, color 0.25s ease, transform 0.2s ease;
+  transition: background 0.25s ease, color 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
+  opacity: 0;
+  animation: fadeUp 0.9s 0.8s ease forwards;
+  cursor: pointer;
 }
 
-.all-episodes-btn:hover {
+.ae-btn:hover {
   background: var(--orange);
   color: var(--darker);
-  transform: scale(1.04);
+  transform: scale(1.045);
+  box-shadow: 0 0 28px rgba(254, 127, 0, 0.35);
 }
 
-.all-episodes-btn:hover .cta-arrow { transform: translateX(4px); }
+.ae-arrow {
+  font-size: 1.1em;
+  transition: transform 0.2s ease;
+}
+.ae-btn:hover .ae-arrow { transform: translateX(4px); }
 
 /* ==================== ABOUT SECTIONS ==================== */
 
