@@ -346,11 +346,44 @@ body {
 .episode-title {
   font-family: var(--font-serif);
   font-style: italic;
-  font-weight: 400;
-  font-size: clamp(1rem, 2.5vw, 1.3rem);
-  color: var(--cream-dim);
+  font-weight: 500;
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  color: var(--cream);
   max-width: 80%;
+  line-height: 1.15;
 }
+
+.episode-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.all-episodes-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--cream);
+  border: 1.5px solid var(--orange);
+  padding: 0.5rem 1.2rem;
+  background: transparent;
+  transition: background 0.25s ease, color 0.25s ease, transform 0.2s ease;
+}
+
+.all-episodes-btn:hover {
+  background: var(--orange);
+  color: var(--darker);
+  transform: scale(1.04);
+}
+
+.all-episodes-btn:hover .cta-arrow { transform: translateX(4px); }
 
 /* ==================== ABOUT SECTIONS ==================== */
 
