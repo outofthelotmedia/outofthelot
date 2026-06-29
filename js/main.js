@@ -2,46 +2,40 @@
    OUT OF THE LOT — MAIN JS
    =========================== */
 
-const CHANNEL_ID   = 'UCbCUbULQdUKxiu4LdMonl6g';
-const MIN_DURATION = 4 * 60; // 4 minutes in seconds
+// Footer year
+const fyEl = document.getElementById('footerYear');
+if (fyEl) fyEl.textContent = new Date().getFullYear();
 
-// ── Footer year ──────────────────────────────────────────────
-document.getElementById('footerYear').textContent = new Date().getFullYear();
-
-// ── Navbar scroll state ───────────────────────────────────────
+// Navbar scroll
 const navbar = document.getElementById('navbar');
-window.addEventListener('scroll', () => {
-  navbar.classList.toggle('scrolled', window.scrollY > 60);
-}, { passive: true });
+if (navbar) {
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
+  }, { passive: true });
+}
 
-// ── Mobile nav toggle ─────────────────────────────────────────
+// Mobile nav
 const navToggle = document.querySelector('.nav-toggle');
 const navLinks  = document.querySelector('.nav-links');
-navToggle?.addEventListener('click', () => {
-  navLinks.classList.toggle('open');
-});
+navToggle?.addEventListener('click', () => navLinks.classList.toggle('open'));
 navLinks?.querySelectorAll('a').forEach(a => {
   a.addEventListener('click', () => navLinks.classList.remove('open'));
 });
 
-// ── Scroll-reveal ─────────────────────────────────────────────
+// Scroll-reveal
 const revealEls = document.querySelectorAll(
-  '.about-inner, .episode-inner, .section-eyebrow, .about-title, .about-body, .image-placeholder'
+  '.about-inner, .episode-inner, .footer-content, .about-title, .about-body, .image-placeholder'
 );
 revealEls.forEach(el => el.classList.add('reveal'));
-
-const revealObserver = new IntersectionObserver(
+const observer = new IntersectionObserver(
   entries => entries.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.classList.add('visible');
-      revealObserver.unobserve(e.target);
-    }
+    if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
   }),
-  { threshold: 0.12 }
+  { threshold: 0.1 }
 );
-revealEls.forEach(el => revealObserver.observe(el));
+revealEls.forEach(el => observer.observe(el));
 
-// ── Scroll hint fade-out ──────────────────────────────────────
+// Scroll hint fade
 const scrollHint = document.getElementById('scrollHint');
 if (scrollHint) {
   window.addEventListener('scroll', () => {
@@ -50,93 +44,56 @@ if (scrollHint) {
   }, { passive: true });
 }
 
-// ── YouTube: fetch latest long-form episode ───────────────────
-// Uses YouTube Data API v3 — replace API_KEY with yours (free, takes 2 min)
-// See README.md for instructions.
-
-const YT_API_KEY = AIzaSyBQjLcN8QGWXjVlUFudYsn4Y7nV8z3A1Mw; // <-- REPLACE THIS
+// ── YouTube: latest long-form episode ────────────────────────
+// To enable: replace YOUR_YOUTUBE_API_KEY with your real key.
+// Get one free at: https://console.cloud.google.com (YouTube Data API v3)
+const YT_API_KEY   = 'YOUR_YOUTUBE_API_KEY';
+const CHANNEL_ID   = 'UCbCUbULQdUKxiu4LdMonl6g';
+const MIN_SECS     = 4 * 60;
 
 async function loadLatestEpisode() {
-  const embedWrap   = document.getElementById('episodeEmbed');
-  const titleEl     = document.getElementById('episodeTitle');
+  const embedWrap = document.getElementById('episodeEmbed');
+  const titleEl   = document.getElementById('episodeTitle');
+  if (!embedWrap) return;
 
-  // If no API key yet, show a placeholder embed of the channel
   if (YT_API_KEY === 'YOUR_YOUTUBE_API_KEY') {
-    showFallbackEmbed(embedWrap, titleEl);
+    // No key yet — the iframe fallback in HTML is already shown
+    if (titleEl) titleEl.textContent = '';
     return;
   }
 
   try {
-    // 1. Fetch latest 10 videos from channel
-    const searchUrl = `https://www.googleapis.com/youtube/v3/search?key=${YT_API_KEY}&channelId=${CHANNEL_ID}&part=snippet,id&order=date&maxResults=10&type=video`;
-    const searchRes  = await fetch(searchUrl);
+    const searchRes  = await fetch(`https://www.googleapis.com/youtube/v3/search?key=${YT_API_KEY}&channelId=${CHANNEL_ID}&part=snippet,id&order=date&maxResults=10&type=video`);
     const searchData = await searchRes.json();
+    if (!searchData.items?.length) return;
 
-    if (!searchData.items?.length) throw new Error('No videos found');
+    const ids        = searchData.items.map(v => v.id.videoId).join(',');
+    const detailRes  = await fetch(`https://www.googleapis.com/youtube/v3/videos?key=${YT_API_KEY}&id=${ids}&part=contentDetails,snippet`);
+    const detailData = await detailRes.json();
 
-    // 2. Get durations to filter long-form
-    const ids         = searchData.items.map(v => v.id.videoId).join(',');
-    const detailsUrl  = `https://www.googleapis.com/youtube/v3/videos?key=${YT_API_KEY}&id=${ids}&part=contentDetails,snippet`;
-    const detailsRes  = await fetch(detailsUrl);
-    const detailsData = await detailsRes.json();
+    const longForm = detailData.items
+      .map(v => ({ id: v.id, title: v.snippet.title, dur: parseDur(v.contentDetails.duration) }))
+      .filter(v => v.dur >= MIN_SECS);
 
-    // 3. Filter to videos longer than MIN_DURATION and pick most recent
-    const longForm = detailsData.items
-      .map(v => ({
-        id:       v.id,
-        title:    v.snippet.title,
-        duration: parseDuration(v.contentDetails.duration),
-      }))
-      .filter(v => v.duration >= MIN_DURATION);
-
-    if (!longForm.length) throw new Error('No long-form videos found');
+    if (!longForm.length) return;
 
     const latest = longForm[0];
-
-    // 4. Render embed
     embedWrap.innerHTML = `
       <iframe
         src="https://www.youtube.com/embed/${latest.id}?rel=0&modestbranding=1&color=white"
-        title="${escapeHtml(latest.title)}"
+        title="${latest.title.replace(/"/g,'&quot;')}"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen
-        loading="lazy"
-      ></iframe>
-    `;
-
-    titleEl.textContent = latest.title;
-
-  } catch (err) {
-    console.warn('YouTube API error:', err);
-    showFallbackEmbed(embedWrap, titleEl);
+        allowfullscreen loading="lazy"
+      ></iframe>`;
+    if (titleEl) titleEl.textContent = latest.title;
+  } catch (e) {
+    console.warn('YouTube fetch error:', e);
   }
 }
 
-function showFallbackEmbed(embedWrap, titleEl) {
-  // Shows the channel page embed as a graceful fallback
-  embedWrap.innerHTML = `
-    <iframe
-      src="https://www.youtube.com/embed?listType=user_uploads&list=OutoftheLotMedia&rel=0&modestbranding=1"
-      title="Out of the Lot — Latest Episodes"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      allowfullscreen
-      loading="lazy"
-    ></iframe>
-  `;
-  if (titleEl) {
-    titleEl.textContent = '— Add your YouTube API key to show the latest episode automatically —';
-  }
-}
-
-// ISO 8601 duration → seconds (e.g. PT1H23M45S → 5025)
-function parseDuration(iso) {
+function parseDur(iso) {
   const m = iso.match(/PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?/);
-  if (!m) return 0;
-  return (parseInt(m[1] || 0) * 3600) + (parseInt(m[2] || 0) * 60) + parseInt(m[3] || 0);
-}
-
-function escapeHtml(str) {
-  return str.replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  return m ? (parseInt(m[1]||0)*3600)+(parseInt(m[2]||0)*60)+parseInt(m[3]||0) : 0;
 }
 
 loadLatestEpisode();
