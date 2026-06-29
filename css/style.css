@@ -364,9 +364,9 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
-  padding: 0.9rem 2.4rem;
+  padding: 0.6rem 1.6rem;
   font-family: var(--font-body);
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -375,11 +375,7 @@ body {
   border: 1.5px solid var(--orange);
   background: transparent;
   transition: background 0.25s ease, color 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
-  opacity: 0;
-  animation: fadeUp 0.9s 0.8s ease forwards;
   cursor: pointer;
-  margin-left: auto;
-  align-self: flex-end;
 }
 
 .ae-btn:hover {
@@ -397,10 +393,10 @@ body {
 
 .episode-bottom {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  margin-top: 2rem;
+  justify-content: flex-end;
+  align-items: center;
   width: 100%;
+  margin-top: 0.8rem;
 }
 
 .episode-title {
