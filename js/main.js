@@ -47,7 +47,7 @@ if (scrollHint) {
 // ── YouTube: latest long-form episode ────────────────────────
 // To enable: replace YOUR_YOUTUBE_API_KEY with your real key.
 // Get one free at: https://console.cloud.google.com (YouTube Data API v3)
-const YT_API_KEY   = 'YOUR_YOUTUBE_API_KEY';
+const YT_API_KEY   = 'AIzaSyBQjLcN8QGWXjVlUFudYsn4Y7nV8z3A1Mw';
 const CHANNEL_ID   = 'UCbCUbULQdUKxiu4LdMonl6g';
 const MIN_SECS     = 4 * 60;
 
