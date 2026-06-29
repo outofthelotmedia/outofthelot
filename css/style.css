@@ -349,9 +349,8 @@ body {
   font-weight: 500;
   font-size: clamp(1.4rem, 3vw, 2rem);
   color: var(--cream);
-  max-width: none;
   line-height: 1.15;
-  flex: 1;
+  margin: 0;
 }
 
 .episode-header {
@@ -379,6 +378,8 @@ body {
   opacity: 0;
   animation: fadeUp 0.9s 0.8s ease forwards;
   cursor: pointer;
+  margin-left: auto;
+  align-self: flex-end;
 }
 
 .ae-btn:hover {
