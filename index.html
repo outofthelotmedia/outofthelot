@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Out of the Lot</title>
-  <meta name="description" content="Out of the Lot. Real stories. Real roads. Probably some bad puns about horsepower." />
+  <title>Out of the Lot — With Scott</title>
+  <meta name="description" content="Out of the Lot with Scott. Real stories. Real roads. All stories are worth driving." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet" />
@@ -14,12 +14,13 @@
 
   <!-- NAV -->
   <nav class="navbar" id="navbar">
-    <a href="index.html" class="nav-brand">Out of the Lot</a>
+    <div class="nav-left">
+      <a href="#hero" class="nav-brand">Out of the Lot</a>
+    </div>
     <ul class="nav-links">
-      <li><a href="episodes.html">Episodes</a></li>
-      <li><a href="about-show.html">About Show</a></li>
-      <li><a href="about-scott.html">About Scott</a></li>
-      <li><a href="contact.html">Contact</a></li>
+      <li><a href="#episodes">Episodes</a></li>
+      <li><a href="#about-show">About</a></li>
+      <li><a href="#contact">Contact</a></li>
     </ul>
     <button class="nav-toggle" aria-label="Toggle menu">&#9776;</button>
   </nav>
@@ -31,7 +32,8 @@
     </div>
     <div class="hero-overlay"></div>
     <div class="hero-content">
-      <p class="hero-eyebrow">Season 1 — Now Streaming</p>
+      <p class="hero-eyebrow">New Episodes Every<br />
+        Tuesday, Friday &amp; Sunday</p>
       <h1 class="hero-headline">
         All Stories<br />
         Are Worth<br />
@@ -42,7 +44,7 @@
         target="_blank"
         rel="noopener noreferrer"
         class="cta-btn"
-      >Start the Journey</a>
+      >Start the Journey <span class="cta-arrow">&#8594;</span></a>
     </div>
     <div class="scroll-hint" id="scrollHint">
       <span class="scroll-label">scroll</span>
@@ -51,26 +53,24 @@
   </section>
 
   <!-- LATEST EPISODE -->
-  <section class="episode-section full-screen" id="episodes">
-    <div class="episode-inner">
-      <p class="section-eyebrow">Latest Episode</p>
-      <div class="episode-embed-wrap" id="episodeEmbed">
-        <div class="embed-loading">
-          <div class="loading-road">
-            <div class="loading-car">&#9654;</div>
-          </div>
-          <p>Fetching the latest episode&hellip;</p>
-        </div>
-      </div>
+ <section class="episode-section" id="episodes">
+  <div class="episode-inner">
+    <p class="section-eyebrow">Latest Episode</p>
+    <div class="episode-embed-wrap" id="episodeEmbed">
+    </div>
+    <div class="episode-bottom">
       <h2 class="episode-title" id="episodeTitle"></h2>
+        <a
+        href="https://www.youtube.com/@OutoftheLotMedia/videos"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="ae-btn"
+      >All Episodes <span class="ae-arrow">&#8594;</span></a>
     </div>
-    <div class="scroll-hint scroll-hint--dark">
-      <span class="scroll-label">scroll</span>
-      <div class="scroll-line"></div>
-    </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ABOUT THE SHOW (teaser) -->
+  <!-- ABOUT THE SHOW -->
   <section class="about-section" id="about-show">
     <div class="about-inner">
       <div class="about-image-slot">
@@ -79,42 +79,75 @@
         </div>
       </div>
       <div class="about-text">
-        <h2 class="about-title orange">This is OOTL</h2>
+        <h2 class="about-title orange">Out of the Lot</h2>
         <p class="about-body">
-          Out of the Lot is a show that discovers why cars really matter. Through stories, opinions, adventures, and reviews, Out of the Lot will show you cars are more than just machines. You may learn something, you may laugh and hopefully, you may be inspired to go Out of the Lot, on your own.
+          Out of the Lot is a show that discovers why cars really matter. Through stories, opinions, adventures, and reviews, Out of the Lot explores why cars are more than just machines. You may learn something, you may laugh, and hopefully, you'll be inspired to go Out of the Lot yourself.
         </p>
-        <a href="about-show.html" class="about-cta">Read More &#8594;</a>
       </div>
     </div>
   </section>
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="footer-inner">
-      <div class="footer-brand">
-        <span class="footer-logo">Out of the Lot</span>
-        <p class="footer-copy">&copy; <span id="footerYear"></span> Out of the Lot. All rights reserved.<br/>Built on a garage floor, a lot of coffee, and one unforgettable <a href="lancia.html" class="secret-link">Lancia</a>.</p>
+  <!-- ABOUT SCOTT -->
+  <section class="about-section about-section--scott" id="about-scott">
+    <div class="about-inner about-inner--reversed">
+      <div class="about-image-slot">
+        <div class="image-placeholder image-placeholder--scott">
+          <img src="assets/scott.jpg" alt="Scott Kindelberger" />
+        </div>
       </div>
-      <nav class="footer-nav">
-        <a href="episodes.html">Episodes</a>
-        <a href="about-show.html">About Show</a>
-        <a href="about-scott.html">About Scott</a>
-        <a href="contact.html">Contact</a>
-      </nav>
-      <div class="footer-social">
-        <a href="https://www.youtube.com/@OutoftheLotMedia" target="_blank" rel="noopener noreferrer" class="social-link">
-          <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-          YouTube
-        </a>
-        <a href="https://www.instagram.com/outofthelotmedia/" target="_blank" rel="noopener noreferrer" class="social-link">
-          <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-          Instagram
-        </a>
-        <a href="mailto:scott@outofthelot.com" class="social-link">
-          <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
-          scott@outofthelot.com
-        </a>
+      <div class="about-text">
+        <h2 class="about-title orange">This is Scott</h2>
+        <p class="about-body">
+          Hello,<br />
+          My name is Scott Kindelberger. I'm the presenter and producer of Out of the Lot.
+        </p>
+        <a href="about-scott.html" class="read-more-btn">Read More <span class="cta-arrow">&#8594;</span></a>
       </div>
+    </div>
+  </section>
+
+  <!-- FOOTER (as a full section) -->
+  <footer class="footer-section" id="contact">
+    <div class="footer-content">
+
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-brand-row">
+            <span class="footer-logo">Out of the Lot</span>
+          </div>
+          <p class="footer-slogan">All stories are worth driving.</p>
+          <p class="footer-copy">&copy; <span id="footerYear"></span> Out of the Lot. All rights reserved. Probably.</p>
+        </div>
+
+        <nav class="footer-nav">
+          <p class="footer-nav-label">Navigate</p>
+          <a href="#episodes">Episodes</a>
+          <a href="#about-show">About the Show</a>
+          <a href="#about-scott">About Scott</a>
+          <a href="mailto:outofthelot.media@gmail.com">Contact</a>
+        </nav>
+
+        <div class="footer-social">
+          <p class="footer-nav-label">Find Us</p>
+          <a href="https://www.youtube.com/@OutoftheLotMedia" target="_blank" rel="noopener noreferrer" class="social-link">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            YouTube
+          </a>
+          <a href="https://www.instagram.com/outofthelotmedia/" target="_blank" rel="noopener noreferrer" class="social-link">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            Instagram
+          </a>
+          <a href="mailto:outofthelot.media@gmail.com" class="social-link">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            outofthelot.media@gmail.com
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>Have you heard of the Lancia Delta HF Integrale?</p>
+      </div>
+
     </div>
   </footer>
 

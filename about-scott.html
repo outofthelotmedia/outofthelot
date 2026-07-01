@@ -4,95 +4,80 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About Scott — Out of the Lot</title>
-  <meta name="description" content="Meet Scott — the person behind Out of the Lot." />
+  <meta name="description" content="Scott Kindelberger — presenter and producer of Out of the Lot." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/scott.css" />
 </head>
-<body>
+<body class="scott-page">
 
   <!-- NAV -->
-  <nav class="navbar" id="navbar">
-    <a href="index.html" class="nav-brand">Out of the Lot</a>
+  <nav class="navbar scrolled" id="navbar">
+    <div class="nav-left">
+      <a href="index.html" class="nav-brand">Out of the Lot</a>
+    </div>
     <ul class="nav-links">
-      <li><a href="episodes.html">Episodes</a></li>
-      <li><a href="about-show.html">About Show</a></li>
-      <li><a href="about-scott.html">About Scott</a></li>
-      <li><a href="contact.html">Contact</a></li>
+      <li><a href="index.html#episodes">Episodes</a></li>
+      <li><a href="index.html#about-show">About</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
     </ul>
     <button class="nav-toggle" aria-label="Toggle menu">&#9776;</button>
   </nav>
 
-  <!-- PAGE HERO -->
-  <section class="page-hero">
-    <p class="page-hero-eyebrow">About</p>
-    <h1 class="page-hero-title">Scott</h1>
-    <p class="page-hero-sub">The person behind the camera, the wrench, and the show.</p>
-  </section>
+  <!-- SCOTT FULL BIO -->
+  <main class="scott-main">
 
-  <!-- BIO -->
-  <section class="page-about-section page-about-section--alt">
-    <div class="page-about-layout">
-      <div class="about-image-slot">
-        <div class="image-placeholder image-placeholder--scott">
-          <!-- REPLACE WITH: <img src="assets/scott.jpg" alt="Scott" style="width:100%; height:100%; object-fit:cover;" /> -->
-          <p style="color: var(--cream); opacity:.5; font-size:.9rem; text-align:center; padding:2rem;">Add a photo of Scott here</p>
-        </div>
+    <div class="scott-hero">
+      <div class="scott-hero-img">
+        <img src="assets/scott.jpg" alt="Scott Kindelberger" />
       </div>
-      <div class="page-about-body">
-        <!-- REPLACE THE PARAGRAPHS BELOW WITH SCOTT'S FULL BIO -->
-        <p>
-          This is where Scott introduces himself. His story. His obsession with cars. Why he started this. Probably something self-deprecating that makes people immediately like him.
-        </p>
-        <p>
-          This is filler text for now — replace it with the real story. Talk about how the car obsession started, the first car, the first wrench turned in anger, and how it all led here.
-        </p>
-        <p>
-          Another placeholder paragraph. This is a good spot to talk about the engineering degree, Wazzu Racing, the film studies minor, and how all of it collided into Out of the Lot.
-        </p>
-        <p>
-          One more placeholder paragraph to close things out — talk about what's next, what you're driving right now, and what you're hoping people take away from the show.
-        </p>
+      <div class="scott-hero-text">
+        <p class="section-eyebrow">The Man Driving the Stories</p>
+        <h1 class="scott-name">Scott Kindelberger</h1>
+        <p class="scott-subtitle">Presenter &amp; Producer, Out of the Lot</p>
+        <div class="scott-divider"></div>
       </div>
     </div>
-  </section>
 
-  <!-- BACK HOME -->
-  <div class="back-home">
-    <a href="index.html" class="back-home-btn">Back to Home</a>
-  </div>
+    <article class="scott-bio">
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="footer-inner">
-      <div class="footer-brand">
-        <span class="footer-logo">Out of the Lot</span>
-        <p class="footer-copy">&copy; <span id="footerYear"></span> Out of the Lot. All rights reserved.<br/>Built on a garage floor, a lot of coffee, and one unforgettable <a href="lancia.html" class="secret-link">Lancia</a>.</p>
+      <p>Hello,</p>
+      <p>My name is Scott Kindelberger. I'm the presenter and producer of Out of the Lot.</p>
+      <p>During the day, I spend my time using my Mechanical Engineering degree from Washington State University as a manufacturing engineer in the trucking industry. During the night, when I am not dreaming about owning a Lancia Delta HF Integrale, I spend my time using my Film Studies minor to make episodes of Out of the Lot.</p>
+      <p>I don't know everything about cars, and I'm certainly not a master mechanic. What I do have are plenty of opinions, a love for driving, and a fascination with the stories cars create. I'd much rather explore why a car matters than tell you to buy one... unless it's a race car, which you should absolutely go buy.</p>
+      <p>I grew up loving cars, but I later realized I loved the way they made me feel. Whether it was the speed of a race car, the looks of a hypercar, or the majesty of the Fiat Toblerone, cars had a way of pulling me in. I love hearing stories, and I love telling stories, and Out of the Lot is where I get to explore those stories.</p>
+      <p>My love of storytelling stems from my adoration of movies. I like how they bring you into a new world, somewhere you have never, or rarely, been before. Movies make you feel something new, create a connection that can only be broken by time (or dementia), and allow you to experience a life that is not your own. In an age of endless information, feeling and understanding are among the most important gifts someone can give (second only to a Lancia Delta HF Integrale).</p>
+      <p>My goal is not to teach you about cars; that will be a byproduct of each episode, but to share something with you. It could be a frustration with the automotive industry killing the hatchback, a love for cars like the Lancia Delta HF Integrale, or simply a laugh... of which I do at all my own jokes.</p>
+      <p>This journey has just begun, and I look forward to our adventures Out of the Lot.</p>
+      <p>As always, thank you so much for watching. I truly do hope you enjoy.</p>
+      <p class="scott-goodbye">Goodbye.</p>
+
+      <div class="scott-cars">
+        <h3 class="scott-cars-title">The Garage (Current &amp; Aspirational)</h3>
+        <ul class="scott-cars-list">
+          <li><span class="car-label">Favorite Car</span> Lancia Delta HF Integrale</li>
+          <li><span class="car-label">Second Favorite Car</span> Pagani Utopia <span class="car-aside">(I put two because sometimes I can't decide.)</span></li>
+          <li><span class="car-label">First Car</span> 1993 Honda Civic DX (4-door)</li>
+          <li><span class="car-label">Current Daily Driver</span> 2008 Toyota Sienna CE</li>
+          <li><span class="car-label">My Reminder to Work Harder</span> 2008 Toyota Sienna CE</li>
+        </ul>
       </div>
-      <nav class="footer-nav">
-        <a href="episodes.html">Episodes</a>
-        <a href="about-show.html">About Show</a>
-        <a href="about-scott.html">About Scott</a>
-        <a href="contact.html">Contact</a>
-      </nav>
-      <div class="footer-social">
-        <a href="https://www.youtube.com/@OutoftheLotMedia" target="_blank" rel="noopener noreferrer" class="social-link">
-          <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-          YouTube
-        </a>
-        <a href="https://www.instagram.com/outofthelotmedia/" target="_blank" rel="noopener noreferrer" class="social-link">
-          <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-          Instagram
-        </a>
-        <a href="mailto:scott@outofthelot.com" class="social-link">
-          <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
-          scott@outofthelot.com
-        </a>
-      </div>
-    </div>
-  </footer>
 
-  <script src="js/main.js"></script>
+      <a href="index.html" class="cta-btn" style="margin-top:3rem; display:inline-block;">
+        &#8592; Back to the Lot
+      </a>
+
+    </article>
+  </main>
+
+  <script>
+    // Mobile nav toggle
+    const navToggle = document.querySelector('.nav-toggle');
+    const navLinks  = document.querySelector('.nav-links');
+    navToggle?.addEventListener('click', () => navLinks.classList.toggle('open'));
+    document.getElementById('footerYear') && (document.getElementById('footerYear').textContent = new Date().getFullYear());
+  </script>
 </body>
 </html>
