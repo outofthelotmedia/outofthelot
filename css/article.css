@@ -1,0 +1,385 @@
+/* ===========================
+   ARTICLE PAGES
+   Shared by: About Scott, About Show, Lancia, Poem, Contact, Episodes
+   =========================== */
+
+.article-page {
+  background: var(--darker);
+}
+
+.article-main {
+  padding-top: var(--nav-h);
+  min-height: 100vh;
+}
+
+.article-hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 75vh;
+  align-items: end;
+}
+
+.article-hero-img {
+  height: 75vh;
+  overflow: hidden;
+  position: relative;
+}
+
+.article-hero-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+
+.article-hero-img::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, transparent 70%, var(--darker) 100%),
+              linear-gradient(to top, var(--darker) 0%, transparent 30%);
+}
+
+.article-hero-text {
+  padding: 4rem 5rem 4rem 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+/* Variant for hero without an image (single column, e.g. Poem, Lancia) */
+.article-hero--solo {
+  grid-template-columns: 1fr;
+  min-height: 46vh;
+  padding: 0 6vw;
+}
+.article-hero--solo .article-hero-text {
+  padding: 4rem 0;
+  max-width: 720px;
+}
+
+.article-name {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 6vw, 5.5rem);
+  color: var(--orange);
+  line-height: 1;
+  margin: 0.5rem 0;
+}
+
+.article-subtitle {
+  font-size: 0.82rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--cream-dim);
+  font-weight: 500;
+  margin-top: 0.6rem;
+}
+
+.article-divider {
+  width: 60px;
+  height: 2px;
+  background: var(--orange);
+  margin-top: 2rem;
+  opacity: 0.7;
+}
+
+/* BODY */
+.article-body {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 5rem 2rem 8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.article-body p {
+  font-size: 1.05rem;
+  line-height: 1.9;
+  color: var(--cream-dim);
+  font-weight: 300;
+}
+
+.article-signoff {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.2rem !important;
+  color: var(--cream) !important;
+  opacity: 0.9;
+  margin-top: 0.5rem;
+}
+
+/* EXTRA BOX (Garage / Important Dates / etc.) */
+.article-extra {
+  margin-top: 2rem;
+  border-top: 1px solid rgba(254, 127, 0, 0.2);
+  padding-top: 2.5rem;
+}
+
+.article-extra-title {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  color: var(--orange);
+  letter-spacing: 0.04em;
+  margin-bottom: 1.5rem;
+}
+
+.article-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.article-list li {
+  font-size: 0.95rem;
+  color: var(--cream-dim);
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  border-bottom: 1px solid rgba(244, 241, 234, 0.06);
+  padding-bottom: 0.9rem;
+  line-height: 1.6;
+}
+
+.item-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--orange);
+  font-weight: 600;
+  min-width: 200px;
+  flex-shrink: 0;
+  opacity: 0.85;
+}
+
+.item-aside {
+  font-size: 0.82rem;
+  font-style: italic;
+  opacity: 0.55;
+}
+
+/* Article page CTA — override animation opacity */
+.article-body .cta-btn {
+  opacity: 1;
+  animation: none;
+}
+
+/* ==================== SECRET LINKS ==================== */
+
+.secret-link {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px dotted transparent;
+  cursor: pointer;
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+.secret-link:hover,
+.secret-link:focus {
+  color: var(--orange);
+  border-bottom-color: var(--orange);
+}
+
+/* ==================== PHOTO + CAPTION (Lancia page) ==================== */
+
+.article-photo {
+  width: 100%;
+  border: 1px solid rgba(254, 127, 0, 0.2);
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.article-photo img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.article-caption {
+  font-size: 0.82rem;
+  color: var(--cream-dim);
+  opacity: 0.6;
+  font-style: italic;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+/* ==================== POEM PAGE ==================== */
+
+.poem-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem 4rem;
+  margin: 2rem 0 3rem;
+}
+
+.poem-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1.7rem;
+}
+
+.poem-stanza {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: var(--cream-dim);
+  text-align: center;
+}
+
+.poem-signature {
+  text-align: center;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.15rem;
+  color: var(--cream);
+  opacity: 0.9;
+  margin-top: 1rem;
+}
+
+/* ==================== CONTACT PAGE ==================== */
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.contact-card {
+  border: 1px solid rgba(254, 127, 0, 0.18);
+  background: rgba(255, 255, 255, 0.02);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  transition: border-color 0.25s ease, background 0.25s ease;
+}
+
+.contact-card:hover {
+  border-color: rgba(254, 127, 0, 0.5);
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.contact-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  color: var(--orange);
+  letter-spacing: 0.03em;
+}
+
+.contact-card p {
+  font-size: 0.92rem;
+  color: var(--cream-dim);
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+.contact-card a {
+  font-size: 0.85rem;
+  color: var(--cream);
+  text-decoration: none;
+  border-bottom: 1px solid var(--orange);
+  align-self: flex-start;
+  padding-bottom: 2px;
+  transition: color 0.2s ease;
+}
+.contact-card a:hover { color: var(--orange); }
+
+/* ==================== EPISODES / PLAYLIST PAGE ==================== */
+
+.playlist-section {
+  position: relative;
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 5rem 5vw;
+  border-bottom: 1px solid rgba(254, 127, 0, 0.08);
+}
+
+.playlist-section:nth-child(odd) { background: var(--darker); }
+.playlist-section:nth-child(even) { background: var(--dark); }
+
+.playlist-inner {
+  width: 90%;
+  max-width: 960px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.2rem;
+}
+
+.playlist-embed-wrap {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: rgba(0,0,0,0.4);
+  border: 1px solid rgba(254, 127, 0, 0.15);
+  overflow: hidden;
+}
+
+.playlist-embed-wrap iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+.playlist-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-top: 0.8rem;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.playlist-title {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  color: var(--cream);
+  line-height: 1.15;
+  margin: 0;
+}
+
+.episodes-intro {
+  padding: 8rem 6vw 2rem;
+  max-width: 780px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.episodes-intro h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  color: var(--orange);
+  letter-spacing: 0.03em;
+  margin: 0.6rem 0 1rem;
+}
+
+/* ==================== RESPONSIVE ==================== */
+
+@media (max-width: 768px) {
+  .article-hero { grid-template-columns: 1fr; }
+  .article-hero-img { height: 50vw; min-height: 260px; }
+  .article-hero-img::after { background: linear-gradient(to top, var(--darker) 0%, transparent 40%); }
+  .article-hero-text { padding: 2rem 1.5rem; }
+  .article-hero--solo { padding: 0 1.5rem; }
+  .article-hero--solo .article-hero-text { padding: 2.5rem 0; }
+
+  .article-body { padding: 3rem 1.5rem 5rem; }
+  .item-label { min-width: 140px; }
+  .article-list li { flex-direction: column; gap: 0.2rem; }
+
+  .poem-columns { grid-template-columns: 1fr; gap: 2rem; }
+
+  .contact-grid { grid-template-columns: 1fr; }
+
+  .playlist-bottom { flex-direction: column; align-items: flex-start; }
+}

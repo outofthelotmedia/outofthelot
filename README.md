@@ -3,62 +3,51 @@
 ## Files
 ```
 outofthelot/
-├── index.html          ← The whole website
-├── css/style.css       ← All styling
-├── js/main.js          ← Scroll effects + YouTube API
-├── assets/
-│   ├── hero-road.jpg   ← Hero background image
-│   ├── logo.png        ← Show logo
-│   ├── road-icon.png   ← Road/arrow graphic
-│   └── banner.png      ← Banner image
-└── README.md           ← This file
+├── index.html              ← Homepage
+├── about-show.html         ← "This is OOTL" full page + Important Dates
+├── about-scott.html        ← Scott's full bio page
+├── episodes.html           ← All playlists (Series 1, Parking Lot Prattle, Shorts)
+├── contact.html            ← Contact page
+├── lancia.html             ← Secret page (linked from "Lancia" in the footer)
+├── poem.html               ← Secret page (linked from "Scott" under the Lancia photo)
+├── css/
+│   ├── style.css           ← Global styles (nav, hero, footer, etc.)
+│   └── article.css         ← Shared styles for all the long-form pages
+├── js/main.js               ← Scroll effects + latest-episode loader
+├── worker/
+│   ├── youtube-proxy-worker.js  ← Cloudflare Worker that hides your API key
+│   └── README.md            ← Step-by-step setup for the above (do this!)
+├── assets/                  ← Images
+└── README.md                ← This file
 ```
 
 ---
 
-## Step 1 — Get a Free YouTube API Key (5 minutes)
+## Step 1 — Set Up Your YouTube API Key SAFELY
 
-This unlocks the "latest episode" auto-loading.
+Your old key got exposed because it lived in plain text inside a public
+GitHub repo. **Don't put the key directly in `js/main.js` again** — do
+the free Cloudflare Worker setup instead, so the key never touches this
+repo or your page source.
 
-1. Go to https://console.cloud.google.com
-2. Create a free project (call it anything)
-3. In the left menu → **APIs & Services** → **Library**
-4. Search "YouTube Data API v3" → Enable it
-5. Go to **APIs & Services** → **Credentials** → **Create Credentials** → **API Key**
-6. Copy the key
-7. Open `js/main.js` and replace `YOUR_YOUTUBE_API_KEY` with your key
+👉 Full walkthrough: **`worker/README.md`**
 
-> It's free — YouTube gives you 10,000 units/day which is way more than you need.
+It takes about 10 minutes and is free. Until you do it, the homepage
+just shows the fallback "Latest Episode" spot — nothing breaks.
 
 ---
 
-## Step 2 — Add Your Content
+## Step 2 — Update Content
 
-Open `index.html` in VS Code and find these spots:
-
-### Hero text (line ~55)
-```html
-<h1 class="hero-headline">
-  enter<br />
-  main text<br />
-  right<br />
-  here
-</h1>
-```
-Replace those 4 lines with whatever you want.
-
-### About the Show (line ~80)
-Replace the placeholder text in the paragraph tag under `<!-- REPLACE THIS TEXT... -->`
-
-### About Scott (line ~95)
-Same thing — add your bio.
-
-### Add Scott's photo
-1. Save a photo as `assets/scott.jpg`
-2. In `index.html`, find `<!-- REPLACE WITH:` and replace that whole block with:
-```html
-<img src="assets/scott.jpg" alt="Scott" style="width:100%; height:100%; object-fit:cover;" />
-```
+- **Filler paragraphs**: `about-show.html`, `lancia.html`, and the placeholder
+  cars in the "About the Show" section are marked with `[Filler paragraph...]`
+  — swap those out with your own writing whenever you're ready.
+- **Important Dates**: at the bottom of `about-show.html`. Add new entries by
+  copying an existing `<li>` in the `.article-list`.
+- **New playlists**: `episodes.html` has one `<section class="playlist-section">`
+  per playlist. Copy one to add a fourth playlist later — just change the
+  `list=` YouTube playlist ID in the `iframe src`, the playlist title, and
+  the "Watch on YouTube" link.
 
 ---
 
@@ -124,15 +113,16 @@ Everything is in `css/style.css` at the top:
 
 ```css
 :root {
-  --dark:   #1a2b2a;   /* main background */
-  --orange: #f47c20;   /* accent orange */
-  --cream:  #f0ebe0;   /* text color */
+  --dark:   #122121;   /* main background */
+  --orange: #fe7f00;   /* accent orange */
+  --cream:  #F4F1EA;   /* text color */
 }
 ```
 
-Change those three values and the whole site updates.
+Change those three values and the whole site updates — `css/article.css`
+reads from the same variables automatically.
 
 ---
 
 ## Questions?
-Email: outofthelot.media@gmail.com (or just ask Claude)
+Email: scott@outofthelot.com (or just ask Claude)

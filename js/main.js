@@ -24,7 +24,7 @@ navLinks?.querySelectorAll('a').forEach(a => {
 
 // Scroll-reveal
 const revealEls = document.querySelectorAll(
-  '.about-inner, .episode-inner, .footer-content, .about-title, .about-body, .image-placeholder'
+  '.about-inner, .episode-inner, .footer-content, .about-title, .about-body, .image-placeholder, .playlist-inner, .article-hero, .article-body'
 );
 revealEls.forEach(el => el.classList.add('reveal'));
 const observer = new IntersectionObserver(
@@ -45,55 +45,51 @@ if (scrollHint) {
 }
 
 // ── YouTube: latest long-form episode ────────────────────────
-// To enable: replace YOUR_YOUTUBE_API_KEY with your real key.
-// Get one free at: https://console.cloud.google.com (YouTube Data API v3)
-const YT_API_KEY   = 'AIzaSyBQjLcN8QGWXjVlUFudYsn4Y7nV8z3A1Mw';
-const CHANNEL_ID   = 'UCbCUbULQdUKxiu4LdMonl6g';
-const MIN_SECS     = 4 * 60;
+//
+// SAFE KEY SETUP — read this before touching anything below.
+//
+// This site is static (GitHub Pages), so any key placed directly in this
+// file is visible to anyone who views the page source, even if it's never
+// committed to the repo. The fix is to never let the browser hold the key
+// at all: a small serverless proxy (free on Cloudflare Workers) holds the
+// real YouTube API key as an encrypted secret, and this file just calls
+// that proxy's URL. See /worker/README.md in this project for the full
+// 10-minute setup — you only need to do it once.
+//
+// Once your proxy is deployed, paste its URL below. Nothing secret ever
+// lives in this file or in GitHub.
+const PROXY_URL = 'https://YOUR-WORKER-SUBDOMAIN.workers.dev/latest-video';
+const MIN_SECS  = 4 * 60;
 
 async function loadLatestEpisode() {
   const embedWrap = document.getElementById('episodeEmbed');
   const titleEl   = document.getElementById('episodeTitle');
   if (!embedWrap) return;
 
-  if (YT_API_KEY === 'YOUR_YOUTUBE_API_KEY') {
-    // No key yet — the iframe fallback in HTML is already shown
+  if (PROXY_URL.includes('YOUR-WORKER-SUBDOMAIN')) {
+    // Proxy not set up yet — leave the placeholder embed in place.
     if (titleEl) titleEl.textContent = '';
     return;
   }
 
   try {
-    const searchRes  = await fetch(`https://www.googleapis.com/youtube/v3/search?key=${YT_API_KEY}&channelId=${CHANNEL_ID}&part=snippet,id&order=date&maxResults=10&type=video`);
-    const searchData = await searchRes.json();
-    if (!searchData.items?.length) return;
+    const res  = await fetch(PROXY_URL);
+    if (!res.ok) throw new Error(`Proxy returned ${res.status}`);
+    const data = await res.json();
 
-    const ids        = searchData.items.map(v => v.id.videoId).join(',');
-    const detailRes  = await fetch(`https://www.googleapis.com/youtube/v3/videos?key=${YT_API_KEY}&id=${ids}&part=contentDetails,snippet`);
-    const detailData = await detailRes.json();
+    if (!data?.id) return;
 
-    const longForm = detailData.items
-      .map(v => ({ id: v.id, title: v.snippet.title, dur: parseDur(v.contentDetails.duration) }))
-      .filter(v => v.dur >= MIN_SECS);
-
-    if (!longForm.length) return;
-
-    const latest = longForm[0];
     embedWrap.innerHTML = `
       <iframe
-        src="https://www.youtube.com/embed/${latest.id}?rel=0&modestbranding=1&color=white"
-        title="${latest.title.replace(/"/g,'&quot;')}"
+        src="https://www.youtube.com/embed/${data.id}?rel=0&modestbranding=1&color=white"
+        title="${(data.title || '').replace(/"/g,'&quot;')}"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowfullscreen loading="lazy"
       ></iframe>`;
-    if (titleEl) titleEl.textContent = latest.title;
+    if (titleEl) titleEl.textContent = data.title || '';
   } catch (e) {
-    console.warn('YouTube fetch error:', e);
+    console.warn('Latest episode fetch error:', e);
   }
-}
-
-function parseDur(iso) {
-  const m = iso.match(/PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?/);
-  return m ? (parseInt(m[1]||0)*3600)+(parseInt(m[2]||0)*60)+parseInt(m[3]||0) : 0;
 }
 
 loadLatestEpisode();
