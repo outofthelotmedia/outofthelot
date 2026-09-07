@@ -101,6 +101,18 @@
   font-weight: 300;
 }
 
+.article-subhead {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  letter-spacing: 0.04em;
+  color: var(--orange);
+  margin-top: 1.5rem;
+}
+
+.article-body p + .article-subhead {
+  margin-top: 2.5rem;
+}
+
 .article-signoff {
   font-family: var(--font-serif);
   font-style: italic;
@@ -168,7 +180,9 @@
 
 /* ==================== SECRET LINKS ==================== */
 
-.secret-link {
+.secret-link,
+.secret-link:visited,
+.secret-link:link {
   color: inherit;
   text-decoration: none;
   border-bottom: 1px dotted transparent;
@@ -209,23 +223,24 @@
 /* ==================== POEM PAGE ==================== */
 
 .poem-columns {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3rem 4rem;
-  margin: 2rem 0 3rem;
+  display: flex;
+  flex-direction: column;
+  max-width: 620px;
+  margin: 2rem auto 3rem;
 }
 
 .poem-col {
   display: flex;
   flex-direction: column;
-  gap: 1.7rem;
+  gap: 1.9rem;
 }
 
 .poem-stanza {
   font-family: var(--font-serif);
-  font-size: 1.05rem;
-  line-height: 1.75;
-  color: var(--cream-dim);
+  font-size: 1.25rem;
+  line-height: 1.85;
+  color: var(--cream);
+  opacity: 0.92;
   text-align: center;
 }
 
@@ -237,6 +252,86 @@
   color: var(--cream);
   opacity: 0.9;
   margin-top: 1rem;
+}
+
+/* ==================== MEMOIR ACCORDION (About Show) ==================== */
+
+.memoir-accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 1rem 0 2rem;
+}
+
+.memoir-item {
+  border: 1px solid rgba(254, 127, 0, 0.2);
+  background: rgba(255, 255, 255, 0.02);
+  transition: border-color 0.25s ease, background 0.25s ease;
+}
+
+.memoir-item:hover {
+  border-color: rgba(254, 127, 0, 0.4);
+}
+
+.memoir-item[open] {
+  border-color: rgba(254, 127, 0, 0.5);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.memoir-summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.4rem 1.6rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 2.6vw, 1.8rem);
+  letter-spacing: 0.02em;
+  color: var(--orange);
+  user-select: none;
+}
+
+.memoir-summary::-webkit-details-marker {
+  display: none;
+}
+
+.memoir-icon {
+  font-family: var(--font-body);
+  font-size: 1.6rem;
+  font-weight: 300;
+  color: var(--orange);
+  flex-shrink: 0;
+  transition: transform 0.25s ease;
+  line-height: 1;
+}
+
+.memoir-item[open] .memoir-icon {
+  transform: rotate(45deg);
+}
+
+.memoir-content {
+  padding: 0 1.6rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.3rem;
+}
+
+.memoir-content p {
+  font-size: 1.02rem;
+  line-height: 1.85;
+  color: var(--cream-dim);
+  font-weight: 300;
+}
+
+.memoir-content .article-subhead {
+  font-size: 1.35rem;
+  margin-top: 1rem;
+}
+
+.memoir-content .article-subhead:first-child {
+  margin-top: 0;
 }
 
 /* ==================== CONTACT PAGE ==================== */
