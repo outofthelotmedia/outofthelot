@@ -24,14 +24,14 @@ navLinks?.querySelectorAll('a').forEach(a => {
 
 // Scroll-reveal
 const revealEls = document.querySelectorAll(
-  '.about-inner, .episode-inner, .footer-content, .about-title, .about-body, .image-placeholder, .playlist-inner, .article-hero, .article-body'
+  '.about-inner, .episode-inner, .footer-content, .about-title, .about-body, .image-placeholder, .playlist-inner'
 );
 revealEls.forEach(el => el.classList.add('reveal'));
 const observer = new IntersectionObserver(
   entries => entries.forEach(e => {
     if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
   }),
-  { threshold: 0.1 }
+  { threshold: 0, rootMargin: '0px 0px -10% 0px' }
 );
 revealEls.forEach(el => observer.observe(el));
 
