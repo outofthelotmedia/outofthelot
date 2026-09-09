@@ -393,10 +393,12 @@ body {
 
 .episode-bottom {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
   width: 100%;
   margin-top: 0.8rem;
+  gap: 1.5rem;
+  flex-wrap: wrap;
 }
 
 .episode-title {

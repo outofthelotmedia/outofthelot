@@ -56,7 +56,7 @@
 }
 .article-hero--solo .article-hero-text {
   padding: 4rem 0;
-  max-width: 720px;
+  max-width: none;
 }
 
 .article-name {
@@ -65,6 +65,11 @@
   color: var(--orange);
   line-height: 1;
   margin: 0.5rem 0;
+}
+
+.article-hero--solo .article-name {
+  white-space: nowrap;
+  font-size: clamp(1.6rem, 5.4vw, 5.5rem);
 }
 
 .article-subtitle {
@@ -467,6 +472,10 @@
   .article-hero-text { padding: 2rem 1.5rem; }
   .article-hero--solo { padding: 0 1.5rem; }
   .article-hero--solo .article-hero-text { padding: 2.5rem 0; }
+  .article-hero--solo .article-name {
+    white-space: normal;
+    font-size: clamp(2.2rem, 9vw, 3.5rem);
+  }
 
   .article-body { padding: 3rem 1.5rem 5rem; }
   .item-label { min-width: 140px; }

@@ -58,7 +58,7 @@ if (scrollHint) {
 //
 // Once your proxy is deployed, paste its URL below. Nothing secret ever
 // lives in this file or in GitHub.
-const PROXY_URL = 'https://ootl-youtube-proxy.scottkindelbergerlikescars.workers.dev/latest-video';
+const PROXY_URL = 'https://YOUR-WORKER-SUBDOMAIN.workers.dev/latest-video';
 const MIN_SECS  = 4 * 60;
 
 async function loadLatestEpisode() {
